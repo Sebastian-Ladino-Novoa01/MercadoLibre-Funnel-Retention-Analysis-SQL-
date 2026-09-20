@@ -68,3 +68,16 @@ The analysis is split into six scripts, meant to be run in order:
 
 - Country-level purchase rates rest on **10 purchases across roughly 850 users**. Three markets (Colombia, Ecuador, Paraguay) recorded zero purchases, and Uruguay's leading 4.5% rate is a single purchase out of 22 users. These gaps are not statistically meaningful and should not drive market decisions on their own.
 - The **August 2025 cohort is truncated**: the observation window ends 2025-08-31, so those users could not reach D28. Its low figures reflect incomplete observation, not worse retention.
+## Tools Used
+
+- SQL
+- PostgreSQL
+- Git / GitHub
+
+## Project Files
+
+- [Executive summary workbook (.xlsx)](Proyecto%204_%20An%C3%A1lisis%20de%20embudo%20y%20retenci%C3%B3n%20para%20MercadoLibre%20-%20Resumen%20ejecutivo%20(1).xlsx)
+
+## Author
+
+**Sebastian Ladino Novoa** — Data Analytics Portfolio
