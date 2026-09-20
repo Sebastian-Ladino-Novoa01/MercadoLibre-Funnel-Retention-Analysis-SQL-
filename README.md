@@ -49,3 +49,22 @@ The analysis is split into six scripts, meant to be run in order:
 - Cohort analysis with `DATE_TRUNC` and `TO_CHAR`
 - Retention analysis (D7 / D14 / D21 / D28)
 - Safe
+
+## Key Findings
+
+### Funnel
+
+- The largest drop-off is between **select_item (76.9%)** and **add_to_cart (11.0%)**: **86% of users who viewed a product never added it to the cart.** Every later stage loses comparatively little.
+- End-to-end conversion to purchase is **1.25%**.
+- Stage by stage, as % of first visit: select_item 76.9% → add_to_cart 11.0% → begin_checkout 4.0% → add_shipping_info 2.4% → add_payment_info 2.1% → purchase 1.25%.
+
+### Retention
+
+- D7 retention is strong across all markets (**79–87%**) but collapses to **1.6–3.2% by D28**.
+- The steepest loss happens between D21 (~22%) and D28 (~2%).
+- Monthly cohorts from January to July are stable (D7 ranges 85.9%–87.7%), which indicates the decay is structural to the product, not a recent regression.
+
+### Caveats
+
+- Country-level purchase rates rest on **10 purchases across roughly 850 users**. Three markets (Colombia, Ecuador, Paraguay) recorded zero purchases, and Uruguay's leading 4.5% rate is a single purchase out of 22 users. These gaps are not statistically meaningful and should not drive market decisions on their own.
+- The **August 2025 cohort is truncated**: the observation window ends 2025-08-31, so those users could not reach D28. Its low figures reflect incomplete observation, not worse retention.
