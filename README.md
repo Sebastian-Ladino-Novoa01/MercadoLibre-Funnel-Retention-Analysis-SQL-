@@ -1,19 +1,8 @@
 # MercadoLibre Funnel & Retention Analysis (SQL)
 
-SQL project focused on conversion funnel analysis and user retention for MercadoLibre.
+SQL project analyzing the conversion funnel and user retention for MercadoLibre, covering January–August 2025.
 
----
-
-# 📂 Project Files
-
-### 📊 SQL Queries
-➡️ **https://github.com/titankrak-hash/MercadoLibre-Funnel-Retention-Analysis-SQL-/blob/main/Pasos%20que%20se%20realizaron%20en%20SQL%20explicados/New%20Text%20Document%20(2).txt**
-
-### 📂 Informe Ejecutivo. Contexto, Hallazgo e Implicacion 
-**https://github.com/titankrak-hash/MercadoLibre-Funnel-Retention-Analysis-SQL-/raw/refs/heads/main/Proyecto%204_%20An%C3%A1lisis%20de%20embudo%20y%20retenci%C3%B3n%20para%20MercadoLibre%20-%20Resumen%20ejecutivo%20(1).xlsx**
-
-
-# Business Objective
+## Business Objective
 
 Analyze MercadoLibre's conversion funnel and user retention to identify where users abandon the purchasing process and evaluate long-term engagement.
 
@@ -22,25 +11,12 @@ The project answers two main business questions:
 - Where are users dropping off during the purchase funnel?
 - How well are users retained over time?
 
----
+## Dataset
 
-# Dataset
+- **`mercadolibre_funnel`** — user events throughout the purchase process, from first visit to purchase.
+- **`mercadolibre_retention`** — user activity after signup, used for cohort retention.
 
-The analysis uses two datasets:
-
-- **mercadolibre_funnel**
-  - User events throughout the purchase process.
-  - Funnel stages from first visit to purchase.
-
-- **mercadolibre_retention**
-  - User activity after signup.
-  - Cohort retention analysis.
-
----
-
-# Funnel Stages
-
-The conversion funnel analyzed is:
+## Funnel Stages
 
 1. First Visit
 2. Select Item / Promotion
@@ -50,77 +26,26 @@ The conversion funnel analyzed is:
 6. Add Payment Information
 7. Purchase
 
----
+## SQL Scripts
 
-# SQL Skills Demonstrated
+The analysis is split into six scripts, meant to be run in order:
+
+| # | Script | What it does |
+|---|--------|--------------|
+| 01 | [`01_data_exploration.sql`](sql/01_data_exploration.sql) | Inspects both tables and lists the distinct events available |
+| 02 | [`02_funnel_user_counts.sql`](sql/02_funnel_user_counts.sql) | Counts unique users reaching each funnel stage, one CTE per stage |
+| 03 | [`03_funnel_conversion_rates.sql`](sql/03_funnel_conversion_rates.sql) | Converts those counts into conversion rates over `first_visit` |
+| 04 | [`04_funnel_by_country.sql`](sql/04_funnel_by_country.sql) | Same conversion rates, segmented by country |
+| 05 | [`05_retention_by_country.sql`](sql/05_retention_by_country.sql) | D7 / D14 / D21 / D28 retention counts and rates per country |
+| 06 | [`06_cohort_retention.sql`](sql/06_cohort_retention.sql) | Assigns users to monthly signup cohorts and measures retention per cohort |
+
+## SQL Skills Demonstrated
 
 - Common Table Expressions (CTEs)
-- JOINs
-- Aggregations
-- CASE WHEN
-- Window Functions
-- Cohort Analysis
-- Funnel Analysis
-- Conversion Rate Calculation
-- Retention Analysis
-- Data Validation (QA)
-
----
-
-# Business Questions Answered
-
-### Funnel Analysis
-
-- Conversion rate between every funnel stage.
-- Largest user drop-off.
-- Funnel performance by country.
-- Funnel performance by device.
-- Funnel performance by referral source.
-
-### Retention Analysis
-
-- D7 Retention
-- D14 Retention
-- D21 Retention
-- D28 Retention
-- Retention comparison by country.
-
----
-
-# Executive Insights
-
-The SQL analysis identifies:
-
-- Highest abandonment stage.
-- Countries with strongest conversion.
-- Countries with weakest conversion.
-- User retention trends.
-- Opportunities to improve product performance.
-
----
-
-# Repository Structure
-
-```
-mercadolibre-funnel-retention-analysis/
-│
-├── README.md
-├── queries.sql
-└── (optional images)
-```
-
----
-
-# Tools Used
-
-- SQL
-- PostgreSQL
-- Git
-- GitHub
-
----
-
-# Author
-
-**Sebastian**
-Data Analytics Portfolio
+- LEFT JOINs across multiple derived tables
+- Aggregations with `COUNT(DISTINCT ...)`
+- Conditional aggregation with `CASE WHEN`
+- Conversion rate calculation
+- Cohort analysis with `DATE_TRUNC` and `TO_CHAR`
+- Retention analysis (D7 / D14 / D21 / D28)
+- Safe
